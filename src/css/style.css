@@ -181,17 +181,30 @@ section {
 }
 
 .hero-image {
-    flex: 1;
-    max-width: 40%;
-    text-align: right;
+    /* ეს უზრუნველყოფს, რომ მხოლოდ აქტიური ფოტო გამოჩნდება */
+    width: 350px;
+    height: 350px;
+    overflow: hidden; 
+    position: relative; /* საჭიროა აბსოლუტური პოზიციონირებისთვის, თუკი ფოტოებს გადაფარავთ */
 }
 
 .hero-image img {
+     
     width: 350px;
     height: 350px;
     border-radius: 50%;
     object-fit: cover;
-    border:  5px solid   var(--accent) ;
+    border: 5px solid var(--accent);
+    
+     position: absolute; /* ყველა ფოტო ერთმანეთზეა დალაგებული */
+    top: 0;
+    left: 0;
+    opacity: 0;  
+    transition: opacity 1s ease-in-out;  
+}
+
+ .hero-image img.active {
+    opacity: 1;
 }
 
 .hero-subheading {
@@ -369,6 +382,13 @@ section {
 }
 
 /* Project Filters/Tabs */
+ 
+
+/* ეს კლასი გამოყენებული იქნება JS-ის მიერ პროექტის დასამალად */
+.project-item.hidden {
+    display: none !important;  
+}
+
 .project-filters {
     margin-bottom: var(--spacing-xl);
     display: flex;
@@ -753,10 +773,18 @@ section {
     .hire-me {
         display: none;
     }
-    .hero-image {
-        max-width: 100%;
+   .hero-image {
+         height: 250px;  
+        width: 100%;
         text-align: center;
-        order: 1; /* Place image first on mobile */
+        margin-bottom: var(--spacing-md);
+    }
+    .hero-image img {
+         
+        left: 50%;
+        transform: translateX(-50%);
+        width: 250px;
+        height: 250px;
     }
     .hero-title {
         font-size: 2.5rem; /* Make the title even smaller */

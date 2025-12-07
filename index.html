@@ -76,8 +76,13 @@
     </a>
 </div>
                 </div>
-                <div class="hero-image">
-                    <img src="./src/img/nm.jpg" alt="Nodari Mamukelashvili">
+               <div class="hero-image">
+            <div class="hero-slider">
+        <img class="slider-image active" src="./src/img/nm.jpg" alt="Profile Photo 1">
+        
+        <img class="slider-image" src="./src/img/nmmm.jpg" alt="Profile Photo 2">
+        <img class="slider-image" src="./src/img/nmmmm.jpg" alt="Profile Photo 3">
+        </div>
                 </div>
             </div>
         </section>
@@ -154,32 +159,34 @@
                 <p class="section-subheading">Lorem ipsum dolor sit amet, consectetur. Mollis erat duit aliquam mauris est risus lectus.</p>
                 
                 <div class="project-filters">
-                    <button class="filter-btn active">All</button>
-                    <button class="filter-btn">Front-End</button>
-                    <button class="filter-btn">Full Stack</button>
-                    <button class="filter-btn">Mobile App</button>
-                    <button class="filter-btn">APIs</button>
-                </div>
+    <button class="filter-btn active" data-category="all">All</button>
+    <button class="filter-btn" data-category="front-end">Front-End</button>
+    <button class="filter-btn" data-category="full-stack">Full Stack</button>
+    <button class="filter-btn" data-category="mobile-app">Mobile App</button>
+    <button class="filter-btn" data-category="apis">APIs</button>
+</div>
 
                 <div class="projects-grid">
     
-    <a class="project-item" href="https://githwizardn.github.io/Roberts/index.html" target="_blank">
+    <a class="project-item" href="https://githwizardn.github.io/Roberts/index.html" target="_blank" data-category="front-end">
         <img src="./src/img/pj1.bmp" alt="property buy sell website design">
         <p class="project-category">Front-End</p>
         <h4 class="project-title">Private property shopping</h4>
     </a>
     
-    <a class="project-item" href="https://githwizardn.github.io/Concept/" target="_blank">
+    <a class="project-item" href="https://githwizardn.github.io/Concept/" target="_blank" data-category="full-stack">
         <img src="./src/img/pj2.bmp" alt="Concept Page Design">
         <p class="project-category">Full Stack</p>
         <h4 class="project-title">Bank concept page</h4>
     </a>
     
-    <a class="project-item" href="https://githwizardn.github.io/Banker/" target="_blank">
+    <a class="project-item" href="https://githwizardn.github.io/Banker/" target="_blank" data-category="mobile-app">
         <img src="./src/img/pj3.bmp" alt="financist Design">
         <p class="project-category">Mobile App</p>
         <h4 class="project-title">Financists</h4>
     </a>
+    
+    
     
 </div>
             </div>
@@ -208,7 +215,7 @@
                         
                         <div class="testimonial-card">
                             <div class="client-info">
-                                <img src="./src/img/client3.png" alt="Client Name" class="client-photo">
+                                <img src="./src/img/client4.jpg" alt="Client Name" class="client-photo">
                                 <div class="client-details"> 
                                     <p class="client-name">Sarah</p>
                                     <p class="client-title">Marketing Manager</p>
@@ -231,12 +238,24 @@
                                 </blockquote>
                             </div>
                         </div>
-                        
+                        <div class="testimonial-card">
+                            <div class="client-info">
+                                <img src="./src/img/client3.jpg" alt="Client Name" class="client-photo">
+                                <div class="client-details"> 
+                                    <p class="client-name">Mark</p>
+                                    <p class="client-title">CTO</p>
+                                </div>
+                                <blockquote class="client-quote">
+                                    <p>Outstanding technical depth combined with exceptional communication skills. His understanding of modern web architecture and ability to mentor junior developers makes him an invaluable asset to any development team.</p>
+                                </blockquote>
+                            </div>
+                        </div>
                     </div>
                     <div class="slider-dots">
                         <span class="dot active" data-index="0"></span>
                         <span class="dot" data-index="1"></span>
                         <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
                     </div>
                 </div>
             </div>

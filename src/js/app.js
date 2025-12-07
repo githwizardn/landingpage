@@ -76,3 +76,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+// HERO SECTION - PHOTO SLIDER FUNCTIONALITY
+ 
+document.addEventListener('DOMContentLoaded', function() {
+    const heroImages = document.querySelectorAll('.hero-slider .slider-image');
+    let heroIndex = 0;
+    const slideDuration = 5000; //  5 seconds
+
+    if (heroImages.length > 1) {
+        
+        function showNextHeroSlide() {
+            //  Remove 'active' class from current image
+            heroImages[heroIndex].classList.remove('active');
+
+            //   Increment index, wrapping around to 0 if we reach the end
+            heroIndex = (heroIndex + 1) % heroImages.length; 
+
+            //   Add 'active' class to the new image
+            heroImages[heroIndex].classList.add('active');
+        }
+
+        // Initialize the automatic slide transition
+        // Start the rotation: call showNextHeroSlide every 5 seconds
+        setInterval(showNextHeroSlide, slideDuration);
+    }
+});
+
+ // PROJECTS SECTION - FILTERING FUNCTIONALITY
+ 
+ 
+ 
+ document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 1. მიიღე არჩეული კატეგორია ღილაკიდან
+            const selectedCategory = this.getAttribute('data-category');
+
+            // 2. ამოიღე 'active' კლასი ყველა ღილაკიდან
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+
+            // 3. დაამატე 'active' კლასი მხოლოდ დაწკაპულ ღილაკს
+            this.classList.add('active');
+
+            // 4. გაფილტრე პროექტები
+            projectItems.forEach(project => {
+                const projectCategories = project.getAttribute('data-category');
+
+                if (selectedCategory === 'all') {
+                    // თუ არჩეულია "ყველა", აჩვენე ყველა პროექტი
+                    project.classList.remove('hidden');
+                } else if (projectCategories.includes(selectedCategory)) {
+                    // თუ პროექტს აქვს არჩეული კატეგორია, აჩვენე
+                    project.classList.remove('hidden');
+                } else {
+                    // დამალე ყველა დანარჩენი
+                    project.classList.add('hidden');
+                }
+            });
+        });
+    });
+});
