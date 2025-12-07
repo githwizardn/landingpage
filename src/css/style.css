@@ -282,6 +282,7 @@ section {
 }
 
 /* Skill Bars Styling */
+
 .skills-list {
     margin-top: var(--spacing-lg);
 }
@@ -309,21 +310,44 @@ section {
     height: 100%;
     background-color: var(--accent);
     border-radius: 5px;
+    
+    /*   თავდაპირველი სიგანე არის 0,   */
+    width: 0; 
+    
     transition: width 1s ease-in-out;
+    
+    /*  პოზიციონირება, რათა ::after-მა იმუშაოს */
+    position: relative; 
 }
 
 .skill-bar span::after {
     content: '';
-    position: absolute;
+    /* პოზიცია   აბსოლუტური მშობელი <span>-ს მიმართ */
+    position: absolute; 
+    
+    /* წრის პოზიციონირება */
     right: 0;
     top: 50%;
     transform: translate(50%, -50%);
+    
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background-color: var(--secondary);
     border: 3px solid var(--accent);
+    
+    /*  transition opacity-სთვის */
+    transition: opacity 0.5s ease-in-out 1s; /* დაიწყება ანიმაციის 1 წამის შემდეგ */
+    
+    /*   თავიდან დამალული წრე */
+    opacity: 0;
 }
+
+/*   დაამატეთ წესი, რომელიც აჩენს წრეს, როდესაც სიგანე არ არის 0 */
+.skill-bar span[style*="width"]:not([style*="width: 0"]) {
+    opacity: 1;
+}
+ 
 
  /*   SERVICES SECTION */
  

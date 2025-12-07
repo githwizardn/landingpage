@@ -104,6 +104,47 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+
+
+ // ABOUT ME SECTION - SKILL BAR ANIMATION
+ 
+document.addEventListener('DOMContentLoaded', function() {
+    // შემოწმება, რომ About Me სექციას აქვს კლასი .about-section
+    const aboutSection = document.querySelector('.about-section');
+    const skillBars = document.querySelectorAll('.skill-bar span');
+    
+    if (!aboutSection) return; 
+
+    function animateSkills() {
+        skillBars.forEach(bar => {
+            // იღებს data-progress-ს (მაგ. '95')
+            const progress = bar.getAttribute('data-progress');
+            
+            //  ცვლის width-ს (მაგ. '95%'), რაც იწვევს CSS transition-ს.
+            bar.style.width = progress + '%';
+        });
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // თუ სექცია გამოჩნდა, დაიწყე ანიმაცია
+                animateSkills();
+                
+                // შეწყვიტე მონიტორინგი, რომ ანიმაცია არ განმეორდეს
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        // სექციის 10% უნდა იყოს ეკრანზე
+        threshold: 0.1 
+    });
+
+    observer.observe(aboutSection);
+});
+
  // PROJECTS SECTION - FILTERING FUNCTIONALITY
  
  
@@ -114,16 +155,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // 1. მიიღე არჩეული კატეგორია ღილაკიდან
+            //  არჩეული კატეგორია ღილაკიდან
             const selectedCategory = this.getAttribute('data-category');
 
-            // 2. ამოიღე 'active' კლასი ყველა ღილაკიდან
+            //   ამოიღე 'active' კლასი ყველა ღილაკიდან
             filterButtons.forEach(btn => btn.classList.remove('active'));
 
-            // 3. დაამატე 'active' კლასი მხოლოდ დაწკაპულ ღილაკს
+            //   დაამატე 'active' კლასი მხოლოდ დაწკაპულ ღილაკს
             this.classList.add('active');
 
-            // 4. გაფილტრე პროექტები
+            //   გაფილტრე პროექტები
             projectItems.forEach(project => {
                 const projectCategories = project.getAttribute('data-category');
 
@@ -141,3 +182,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
