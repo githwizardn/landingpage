@@ -22,27 +22,32 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://github.com/githwizardn">
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/103641200?v=4"> 
-    <meta property="og:site_name" content="Nodari Mamukelashvili Portfolio">    
-    
+    <meta property="og:site_name" content="Nodari Mamukelashvili Portfolio">      
+    <script src="./src/js/app.js" defer></script>
 </head>
 <body>
 
     <header class="header">
-        <div class="container">
-            <a href="#" class="logo">NODARI MAMUKELASHVILI</a>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
-                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                    <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-            <a href="#" class="btn btn-primary nav-cta">Download CV</a>
-        </div>
-    </header>
+    <div class="container">
+        <a href="#" class="logo">NODARI MAMUKELASHVILI</a>
+        
+        <button class="menu-toggle" aria-expanded="false" aria-controls="main-navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav" id="main-navigation">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="btn btn-primary nav-cta">Download CV</a>
+    </div>
+</header>
 
     <main>
         
@@ -53,7 +58,7 @@
                     <h1 class="hero-name">Nodari Mamukelashvili</h1>
                     <h2 class="hero-title">Web Developer</h2>
                     <p class="hero-description">Results-driven React.js Developer with a solid foundation in core Front-End technologies (HTML/CSS, modern JavaScript). Specializing in building responsive, high-performance component architecture, utilizing Hooks and state management (Redux). Team-oriented, with robust Git/GitHub workflow proficiency.</p>
-                    <a href="#contact" class="btn btn-primary">Hire Me</a>
+                    <a href="#contact" class="btn btn-primary hire-me">Hire Me</a>
                    <div class="social-links">
     <a href="https://www.facebook.com/gm663274/" class="social-icon" aria-label="Facebook">
         <i class="fa-brands fa-facebook-f"></i>
@@ -84,7 +89,7 @@
                 </div>
                 <div class="about-content">
                     <h2 class="section-heading">About Me</h2>
-                    <p class="section-subheading">Passionate Front-End Developer, focused on crafting clean, scalable, and  'responsive ' user interfaces. Expertise in the  'React.js ' ecosystem, utilizing  'Hooks ' and modern  'JavaScript ' practices for impactful digital experiences.  'Team-ready '</p>
+                    <p class="section-subheading">Passionate Front-End Developer, focused on crafting clean, scalable, and  'responsive ' user interfaces. Expertise in the  'React.js ' ecosystem, utilizing  'Hooks ' and modern  'JavaScript ' practices for impactful digital experiences.  'Team-ready '</p>
                     
                     <div class="skills-list">
                         <div class="skill-item">
@@ -108,40 +113,40 @@
             </div>
         </section>
 
-  <section id="services" class="services-section">
-    <div class="container">
-        <h2 class="section-heading">Services</h2>
-        <p class="section-subheading">I offer comprehensive front-end development services focused on performance, user experience, and modern architecture.</p>
-        
-        <div class="services-grid">
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-heading">Services</h2>
+            <p class="section-subheading">I offer comprehensive front-end development services focused on performance, user experience, and modern architecture.</p>
             
-            <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-code-branch"></i></div> 
-                <h3>React Component Dev</h3>
-                <p>Builds reusable, efficient, and well-structured UI components using React and functional principles.</p>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-code-branch"></i></div> 
+                    <h3>React Component Dev</h3>
+                    <p>Builds reusable, efficient, and well-structured UI components using React and functional principles.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-code"></i></div> 
+                    <h3>HTML5 & Styling</h3>
+                    <p>Semantic HTML and modern CSS (Flexbox, Grid) for pixel-perfect, clean, and accessible designs.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div> 
+                    <h3>Responsive Design</h3>
+                    <p>Ensuring flawless website appearance and optimal function across all devices and screen sizes.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-database"></i></div> 
+                    <h3>State Management</h3>
+                    <p>Manages predictable data flow using Redux/Context API to ensure application efficiency and speed.</p>
+                </div>
+                
             </div>
-            
-            <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-code"></i></div> 
-                <h3>HTML5 & Styling</h3>
-                <p>Semantic HTML and modern CSS (Flexbox, Grid) for pixel-perfect, clean, and accessible designs.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div> 
-                <h3>Responsive Design</h3>
-                <p>Ensuring flawless website appearance and optimal function across all devices and screen sizes.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-database"></i></div> 
-                <h3>State Management</h3>
-                <p>Manages predictable data flow using Redux/Context API to ensure application efficiency and speed.</p>
-            </div>
-            
         </div>
-    </div>
-</section>
+    </section>
 
         <section id="projects" class="projects-section">
             <div class="container">
@@ -186,42 +191,52 @@
                 <p class="section-subheading">Client success stories highlighting my Front-End expertise, collaborative workflow, and ability to deliver performance-driven digital experiences.</p>
 
                 <div class="testimonial-slider">
-                    <div class="testimonial-card">
-                        <div class="client-info">
-                            <img src="./src/img/client.jpg" alt="Client Name" class="client-photo">
-                            <blockquote class="client-quote">
-                                <p>He delivers a highly professional, performance-focused portfolio. His clear focus on React and responsive design demonstrates a strong ability to build modern, scalable web products that drive business results.</p>
-                            </blockquote>
+                    <div class="testimonial-cards-wrapper"> 
+                        
+                        <div class="testimonial-card">
+                            <div class="client-info">
+                                <img src="./src/img/client.jpg" alt="Client Name" class="client-photo">
+                                <div class="client-details"> 
+                                    <p class="client-name">Dave</p>
+                                    <p class="client-title">CEO</p>
+                                </div>
+                                <blockquote class="client-quote">
+                                    <p>He delivers a highly professional, performance-focused portfolio. His clear focus on React and responsive design demonstrates a strong ability to build modern, scalable web products that drive business results.</p>
+                                </blockquote>
+                            </div>
                         </div>
-                        <p class="client-name">Dave</p>
-                        <p class="client-title">CEO</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="client-info">
-                            <img src="./src/img/client3.png" alt="Client Name" class="client-photo">
-                            <blockquote class="client-quote">
-                                <p>Excellent workflow proficiency. The clean skill segmentation and dedicated service cards show a strong commitment to structured development. His Git/GitHub process integration is exactly what our team needs.</p>
-                            </blockquote>
+                        
+                        <div class="testimonial-card">
+                            <div class="client-info">
+                                <img src="./src/img/client3.png" alt="Client Name" class="client-photo">
+                                <div class="client-details"> 
+                                    <p class="client-name">Sarah</p>
+                                    <p class="client-title">Marketing Manager</p>
+                                </div>
+                                <blockquote class="client-quote">
+                                    <p>Excellent workflow proficiency. The clean skill segmentation and dedicated service cards show a strong commitment to structured development. His Git/GitHub process integration is exactly what our team needs.</p>
+                                </blockquote>
+                            </div>
                         </div>
-                        <p class="client-name">Sarah</p>
-                        <p class="client-title">Marketing Manager</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="client-info">
-                            <img src="./src/img/client2.jpg" alt="Client Name" class="client-photo">
-                            <blockquote class="client-quote">
-                                <p>The attention to detail in the dark theme and orange accents is superb. He clearly translates complex designs into pixel-perfect, accessible code, ensuring a flawless and engaging user experience.</p>
-                            </blockquote>
+                        
+                        <div class="testimonial-card">
+                            <div class="client-info">
+                                <img src="./src/img/client2.jpg" alt="Client Name" class="client-photo">
+                                <div class="client-details"> 
+                                    <p class="client-name">John</p>
+                                    <p class="client-title">Product Designer</p>
+                                </div>
+                                <blockquote class="client-quote">
+                                    <p>The attention to detail in the dark theme and orange accents is superb. He clearly translates complex designs into pixel-perfect, accessible code, ensuring a flawless and engaging user experience.</p>
+                                </blockquote>
+                            </div>
                         </div>
-                        <p class="client-name">John</p>
-                        <p class="client-title">Product Designer</p>
-
+                        
                     </div>
                     <div class="slider-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
                     </div>
                 </div>
             </div>
@@ -279,5 +294,6 @@
         </div>
     </footer>
 
+    
     </body>
 </html>

@@ -115,7 +115,7 @@ section {
     color: var(--accent);
 }
 
- /* 4. HEADER & NAVIGATION */
+ /*   HEADER & NAVIGATION */
  
 .header {
     background-color: var(--primary);
@@ -161,7 +161,7 @@ section {
     font-size: 0.85rem;
 }
 
- /* 5. HERO SECTION */
+ /*   HERO SECTION */
  
 .hero-section {
     text-align: left;
@@ -227,7 +227,7 @@ section {
     margin-bottom: var(--spacing-lg);
 }
 
- /* 6. ABOUT ME SECTION */
+ /*   ABOUT ME SECTION */
  
 .about-section {
     text-align: left;
@@ -312,7 +312,7 @@ section {
     border: 3px solid var(--accent);
 }
 
- /* 7. SERVICES SECTION */
+ /*   SERVICES SECTION */
  
 .services-section {
     background-color: var(--primary);
@@ -362,7 +362,7 @@ section {
     font-size: 0.95rem;
 }
 
- /* 8. PROJECTS SECTION */
+ /*  PROJECTS SECTION */
  
 .projects-section {
     background-color: var(--primary);
@@ -374,6 +374,7 @@ section {
     display: flex;
     justify-content: center;
     gap: var(--spacing-md);
+    white-space: nowrap;   /* Prevent buttons from wrapping */
 }
 
 .filter-btn {
@@ -445,9 +446,7 @@ section {
     font-weight: 700;
 }
 
-/* ============================== */
-/* 9. TESTIMONIALS SECTION */
-/* ============================== */
+ /*   TESTIMONIALS SECTION */ 
 
 .testimonials-section {
     background-color: var(--primary);
@@ -458,12 +457,27 @@ section {
     margin: 0 auto;
 }
 
+/* Wrapper to manage the area where slides appear */
+.testimonial-cards-wrapper {
+    position: relative;
+    overflow: hidden; 
+    width: 100%;
+}
+
 .testimonial-card {
     background-color: var(--secondary);
     padding: var(--spacing-xl);
     border-radius: 10px;
     text-align: left;
     margin-bottom: var(--spacing-lg);
+    
+    /*    Hide all cards by default */
+    display: none; 
+}
+
+/*  This class is toggled by JavaScript to show the current slide */
+.testimonial-card.active {
+    display: block; 
 }
 
 .client-info {
@@ -473,8 +487,8 @@ section {
 }
 
 .client-photo {
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
@@ -535,21 +549,21 @@ section {
 }
 
 .dot {
-    width: 10px;
+    width: 50px;
     height: 10px;
-    border-radius: 50%;
+    border-radius: 5px;
     background-color: gray;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .dot.active {
-    width: 20px;
+    width: 50px;
     border-radius: 5px;
     background-color: var(--accent);
 }
 
- /* 10. CONTACT US SECTION */
+ /*   CONTACT US SECTION */
  
 .contact-section {
     background-color: var(--primary);
@@ -609,7 +623,7 @@ section {
     padding: var(--spacing-md) 0;
 }
 
- /* 11. FOOTER */
+ /*   FOOTER */
  
 .footer {
     background-color: var(--primary);
@@ -664,5 +678,235 @@ section {
     color: var(--secondary);
 }
 
- /* 12. MEDIA QUERIES (RESPONSIVENESS) */
-  
+ 
+/* MEDIA QUERIES - MOBILE STYLES (Screen widths 768px and less) */
+ 
+/* Hide the hamburger button on desktop */
+.menu-toggle {
+    display: none; 
+}
+
+@media (max-width: 768px) {
+    
+    /* Global Container Padding Adjustment */
+    .container {
+        padding: 0 1.5rem; /* Reduce padding on sides for screen space */
+    }
+    
+    /* HEADER & NAVIGATION - Mobile Layout */
+    .header .container {
+        /* Align logo/menu-toggle/CTA to space-between */
+        justify-content: space-between;
+    }
+    
+    /* Show the hamburger button */
+    .menu-toggle {
+        display: block; 
+        background: none;
+        border: none;
+        color: var(--secondary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        /* Push the CTA to the far right, next to the toggle */
+        order: 3; 
+    }
+    
+    /* Hide the navigation menu by default on mobile */
+    .nav {
+        /* Takes up full width below the logo/toggle row */
+        position: absolute;
+        top: 100%; /* Below the header bar */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        max-height: 0; /* Initially hide the menu */
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    /* JavaScript will add this class to show the menu */
+    .nav.open {
+        max-height: 500px; /* Needs to be larger than content height */
+    }
+
+    .nav-list {
+        flex-direction: column; /* Stack menu items vertically */
+        align-items: center;
+        margin: 0; /* Remove desktop margin */
+        padding: var(--spacing-md) 0;
+    }
+    
+    .nav-cta {
+        display: none; /* Can hide the CTA button on mobile header */
+    }
+    
+    /* HERO SECTION Stacking (Text above Image) */
+    .hero-section .container {
+        flex-direction: column; 
+        text-align: center; 
+    }
+    .hero-content {
+        max-width: 100%; /* Take full width */
+        order: 0; /* Place content second (after image in this case) */
+    }
+    .hire-me {
+        display: none;
+    }
+    .hero-image {
+        max-width: 100%;
+        text-align: center;
+        order: 1; /* Place image first on mobile */
+    }
+    .hero-title {
+        font-size: 2.5rem; /* Make the title even smaller */
+    }
+    .social-links {
+        justify-content: center; /* Center the icons under the text */
+    }
+    
+    /* ABOUT ME SECTION Stacking */
+    .about-section .container {
+        flex-direction: column; /* Stack image above content */
+    }
+    .hero-image img, .about-image img {
+        width: 250px;
+        height: 250px;
+    }
+    .about-image {
+        display: none; /* Hide the about image on mobile */
+    }
+    .about-content {
+        max-width: 100%;
+    }
+    .about-content .section-heading,
+    .about-content .section-subheading {
+        text-align: center; /* Center align headings in mobile view */
+    }
+
+    /* SERVICES SECTION Stacking */
+    .services-grid {
+        grid-template-columns: 1fr; /* Switch from 4 columns to 1 column */
+        gap: var(--spacing-md);
+    }
+    .service-card {
+        padding: var(--spacing-lg);
+        text-align: center; /* Center content in service card */
+    }
+    .service-icon {
+        margin: 0 auto var(--spacing-md); /* Center the icon */
+    }
+    .service-card h3, 
+    .service-card p {
+        text-align: center;
+    }
+    
+    /*  PROJECTS SECTION Stacking */
+    .projects-grid {
+        grid-template-columns: 1fr; /* Switch from 3 columns to 1 column */
+    }
+    .project-filters {
+        /* OVERRIDE: Remove wrapping */
+        flex-wrap: nowrap; 
+        
+        /* ADD THIS: Enables horizontal scrolling when content overflows */
+        overflow-x: auto; 
+        
+        /* Ensure it starts from the left edge */
+        justify-content: flex-start; 
+        
+        /* Adds a little space at the right end when scrolling */
+        padding-bottom: 5px;
+    }
+    
+    /* TESTIMONIALS - Revised for Photo and Details Side-by-Side */
+    .testimonial-card {
+        padding: var(--spacing-md);
+    }
+    
+    .client-info {
+        /* Keep column direction for the overall structure: (Top Row) then (Quote) */
+        flex-direction: column; 
+        align-items: flex-start; /* Align all groups to the left */
+        gap: var(--spacing-sm); 
+    }
+
+    /*   Group the Photo and Details side-by-side (Top Row) */
+    .client-info > .client-photo, 
+    .client-info > .client-details {
+        display: flex; /* Make the Photo and Details flow horizontally */
+        align-items: center; /* Vertically center name/title with the photo */
+        gap: var(--spacing-sm);
+    }
+
+    /* the Name and Title container to stack the text */
+    .client-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+    }
+    
+    /*   Align the Name/Title text left */
+    .client-name, 
+    .client-title {
+        text-align: left; /* Aligns text left next to the photo */
+        margin-top: 0;
+    }
+    
+    .client-quote {
+        margin-top: var(--spacing-md);
+        /* Remove positional context if ::before/::after are removed */
+        position: static; 
+    }
+    
+    .client-quote p {
+        text-align: left; 
+    }
+
+    /* Remove floating quotation marks for mobile */
+    .client-quote p::before,
+    .client-quote p::after {
+        content: none;
+    }
+    
+    /* Ensure inputs take full width when stacked */
+    .contact-form .form-row input {
+        width: 100%;
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* CONTACT FORM Stacking (Inputs) */
+    .contact-form .form-row {
+        flex-direction: column; /* Stack name, email, website inputs vertically */
+        gap: 0; 
+    }
+    .contact-submit {
+        width: 100%; /* Make the button full width   */
+    }
+/* FOOTER   */
+
+    .footer-nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    
+    /* 1. Make the Social Links appear first (above the navigation) */
+    .footer-social-links {
+        order: -1; /* Use a negative value to make it appear before all other items (which have default order: 0) */
+        margin-top: 0; /* Remove top margin if necessary for spacing */
+        margin-bottom: var(--spacing-md); /* Add spacing below the links */
+    }
+    
+    /* 2. Ensure the Navigation appears second */
+    .footer-nav {
+        order: 0; /* Default order, ensuring it comes after order: -1 */
+        margin-bottom: var(--spacing-md); /* Add spacing below navigation */
+    }
+
+    /* 3. Ensure Copyright appears last */
+    .copyright {
+        order: 1; /* Puts it at the bottom */
+    }
+      
+}
