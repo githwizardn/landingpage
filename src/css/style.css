@@ -343,7 +343,7 @@ section {
     opacity: 0;
 }
 
-/*   დაამატეთ წესი, რომელიც აჩენს წრეს, როდესაც სიგანე არ არის 0 */
+
 .skill-bar span[style*="width"]:not([style*="width: 0"]) {
     opacity: 1;
 }
