@@ -183,3 +183,99 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+    // 6. CONTACT FORM SUBMISSION AND MODAL
+
+    const contactForm = document.querySelector('.contact-form');
+    const modal = document.getElementById('successModal');
+    const closeButton = document.querySelector('.close-button');
+    const submitButton = document.querySelector('.contact-submit');
+
+    // Submit  (POST to API)
+
+    if (contactForm && modal) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Stop the default form submission
+
+            // Temporarily disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            // Collect form data (using FormData for simplicity)
+            const formData = new FormData(this);
+            
+            // Convert FormData to JSON object
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            data.userId = 1; 
+
+            // **THE TARGET API ENDPOINT**
+            const apiEndpoint = 'https://borjomi.loremipsum.ge/api/send-message';
+
+            try {
+                const response = await fetch(apiEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                // Check if the response status is successful (HTTP 200-299)
+                if (response.ok) {
+                    const result = await response.json();
+                    
+                    // Check for the specific success status (status code 1 is typical for custom APIs)
+                    if (result.status === 1) {
+                        // Success logic: Show modal and reset form
+                        showModal();
+                        contactForm.reset(); // Clear form fields
+                    } else {
+                        // Handle API-specific error message
+                        alert('Submission failed: ' + (result.desc || 'Unknown error.')); 
+                    }
+                } else {
+                    // Handle HTTP error status (400, 500, etc.)
+                    alert(`Error submitting form: HTTP status ${response.status}. Try again.`);
+                }
+            } catch (error) {
+                console.error('Network or Fetch Error:', error);
+                alert('An unexpected network error occurred. Please try again.');
+            } finally {
+                // Re-enable button and reset text
+                submitButton.disabled = false;
+                submitButton.textContent = 'Contact Me';
+            }
+        });
+
+         // Modal 
+
+        function showModal() {
+            modal.classList.add('visible');
+        }
+
+        function hideModal() {
+            modal.classList.remove('visible');
+        }
+
+        // Close modal when close button (x) is clicked
+        closeButton.addEventListener('click', hideModal);
+
+        // Close modal when pressing the ESC key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('visible')) {
+                hideModal();
+            }
+        });
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+    }
+
